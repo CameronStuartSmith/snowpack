@@ -424,14 +424,14 @@ module.exports = function plugin(config, args = {}) {
         );
       }
 
-      emitHTMLFiles({
-        doms,
-        jsEntries,
-        stats,
-        baseUrl,
-        buildDirectory,
-        htmlMinifierOptions,
-      });
+//       emitHTMLFiles({
+//         doms,
+//         jsEntries,
+//         stats,
+//         baseUrl,
+//         buildDirectory,
+//         htmlMinifierOptions,
+//       });
     },
   };
 };
