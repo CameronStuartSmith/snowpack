@@ -69,18 +69,19 @@ function emitHTMLFiles({doms, jsEntries, stats, baseUrl, buildDirectory, htmlMin
           // `type=module` as that is not needed
           const scriptEl = originalScriptEl.cloneNode();
           scriptEl.removeAttribute('type');
-          scriptEl.src = url.parse(baseUrl).protocol
-            ? url.resolve(baseUrl, jsFile)
-            : path.posix.join(baseUrl, jsFile);
+//           scriptEl.src = url.parse(baseUrl).protocol
+//             ? url.resolve(baseUrl, jsFile)
+//             : path.posix.join(baseUrl, jsFile);
           // insert _before_ so the relative order of these scripts is maintained
           insertBefore(scriptEl, originalScriptEl);
         }
         for (const cssFile of cssFiles) {
           const linkEl = dom.window.document.createElement('link');
           linkEl.setAttribute('rel', 'stylesheet');
-          linkEl.href = url.parse(baseUrl).protocol
-            ? url.resolve(baseUrl, cssFile)
-            : path.posix.join(baseUrl, cssFile);
+          linkEl.href = './index.css';
+//           linkEl.href = url.parse(baseUrl).protocol
+//             ? url.resolve(baseUrl, cssFile)
+//             : path.posix.join(baseUrl, cssFile);
           head.append(linkEl);
         }
         originalScriptEl.remove();
@@ -424,14 +425,14 @@ module.exports = function plugin(config, args = {}) {
         );
       }
 
-//       emitHTMLFiles({
-//         doms,
-//         jsEntries,
-//         stats,
-//         baseUrl,
-//         buildDirectory,
-//         htmlMinifierOptions,
-//       });
+      emitHTMLFiles({
+        doms,
+        jsEntries,
+        stats,
+        baseUrl,
+        buildDirectory,
+        htmlMinifierOptions,
+      });
     },
   };
 };
